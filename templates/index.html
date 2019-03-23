@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Wow Chatroom
+{% endblock %}
+{% block body %}
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Display Name</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="txtDisplayName">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="btnAddDisplayName">ADD</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-xl-4 chat">
+      <div class="card mb-sm-4 mb-md-0 contacts_card">
+
+        <div class="card-body channels_body">
+
+
+          <div>
+            
+            <select class="form-control" id="optChlCat">
+              <option value="Technology" selected="selected">Technology</option>
+              <option value="Politics">Politics</option>
+              <option value="Movies">Movies</option>
+              <option value="Music">Music</option>
+            </select>
+
+            <div>
+
+              <input type="text" class="form-control" id="txtNewChannelName" placeholder="Channel Name">
+              <button class="btn btn-dark" id="btnAddChannel">Add New Channel</button>
+            </div>
+          </div>
+          &nbsp;&nbsp;
+          <ui class="channels" id="existingChannels">
+
+            {% for channel in channelsdata %}
+            <li>
+              <div class="d-flex bd-highlight sel-channel" data-chlname="{{channel.name}}">
+                <div class="img_cont">
+                  <img src="/static/images/{{channel.category}}-Icon.png" class="rounded-circle channel_img">
+
+                </div>
+                <div class="channel_info">
+                  <span>{{channel.name}}</span>
+                  <p>{{channel.category}}</p>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ui>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-8 col-xl-6 chat">
+      <div class="card">
+        <div class="msg_head">
+          <div class="d-flex bd-highlight">
+            <div class="img_cont">
+              <img src="/static/images/Technology-Icon.png" class="rounded-circle channel_img">
+              <span class="online_icon"></span>
+            </div>
+            <div class="channel_info">
+              <span id="selectedChannelName">Common Chat</span>
+              <p>1767 Messages</p>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="card-body chat_body">
+
+        </div>
+        <div class="card-footer msg_complete_card">
+          <div class="input-group">
+            <textarea name="" id="messagearea" class="form-control type_msg" placeholder="Type your message..."></textarea>
+            <div class="input-group-append">
+              <span class="input-group-text" id="btnSendMessage"><i class="far fa-plus-square"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}
