@@ -1,1 +1,1 @@
-$ heroku config:set FLASK_APP=application.py
+web: gunicorn app:app
