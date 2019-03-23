@@ -4,6 +4,7 @@ import jsonpickle, datetime
 from typing import List
 
 from flask import Flask, jsonify, render_template, request, json, session
+from flask_session import Session
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
