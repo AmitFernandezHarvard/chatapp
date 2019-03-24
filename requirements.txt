@@ -5,5 +5,3 @@ jsonpickle
 gevent
 gevent-websocket
 gunicorn
-requests
-flask_session

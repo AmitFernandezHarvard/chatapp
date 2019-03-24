@@ -1,20 +1,14 @@
 import os
-import requests
 import jsonpickle, datetime
 from typing import List
-
-from flask import Flask, jsonify, render_template, request, json, session
-from flask_session import Session
+from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
-# Configure session to use filesystem
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+
 
 
 class Chat:
