@@ -4,3 +4,4 @@ typing
 jsonpickle
 gevent
 gevent-websocket
+gunicorn
