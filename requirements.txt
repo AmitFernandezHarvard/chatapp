@@ -5,3 +5,4 @@ jsonpickle
 gevent
 gevent-websocket
 gunicorn
+requests
