@@ -1,7 +1,4 @@
-gunicorn
-requests
 Flask
 Flask-SocketIO
-flask_session
 typing
 jsonpickle

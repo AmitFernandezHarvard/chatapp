@@ -51,8 +51,13 @@ color: rgba(255,255,255,0.6);
     overflow-y: auto;
     background-color:#547A8A;
 }
+.displayname{
+    background-color:#547A8A;
+    font-size: 15px;
+    color: white;
+}
 .msg_complete_card{
-    overflow-y: auto;
+    overflow-y: hidden;
     background-color:#547A8A;
 }
 .card-footer{
@@ -60,6 +65,7 @@ color: rgba(255,255,255,0.6);
     border-top: 1px solid rgba(0,0,0,.125);
     overflow-y: auto;
     background-color:#547A8A;
+    height: 70px;
 }
 .channels{
     list-style: none;

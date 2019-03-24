@@ -9,14 +9,14 @@ Wow Chatroom
 <div class="container">
   <div class="row">
 
-    <div class="col">
+    <div class="col-md-4">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Display Name</span>
+          <span class="input-group-text displayname" id="inputGroup-sizing-default">Login As :</span>
         </div>
         <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="txtDisplayName">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="btnAddDisplayName">ADD</button>
+          <button class="btn btn-outline-secondary displayname" type="button" id="btnAddDisplayName">ADD</button>
         </div>
       </div>
 
@@ -28,10 +28,8 @@ Wow Chatroom
       <div class="card mb-sm-4 mb-md-0 contacts_card">
 
         <div class="card-body channels_body">
-
-
           <div>
-            
+            <div class="alert alert-danger" role="alert" id="errormessage" style="display: none"></div>
             <select class="form-control" id="optChlCat">
               <option value="Technology" selected="selected">Technology</option>
               <option value="Politics">Politics</option>
@@ -40,9 +38,8 @@ Wow Chatroom
             </select>
 
             <div>
-
               <input type="text" class="form-control" id="txtNewChannelName" placeholder="Channel Name">
-              <button class="btn btn-dark" id="btnAddChannel">Add New Channel</button>
+              <div class="text-center"><button class="btn btn-dark center" id="btnAddChannel">Add New Channel</button></div>
             </div>
           </div>
           &nbsp;&nbsp;
@@ -72,12 +69,12 @@ Wow Chatroom
         <div class="msg_head">
           <div class="d-flex bd-highlight">
             <div class="img_cont">
-              <img src="/static/images/Technology-Icon.png" class="rounded-circle channel_img">
+              <img src="/static/images/Technology-Icon.png" id="selectedChannelImg" class="rounded-circle channel_img">
               <span class="online_icon"></span>
             </div>
             <div class="channel_info">
               <span id="selectedChannelName">Common Chat</span>
-              <p>1767 Messages</p>
+              <p id="selectedChannelCat">1767 Messages</p>
             </div>
 
           </div>
@@ -86,9 +83,11 @@ Wow Chatroom
         <div class="card-body chat_body">
 
         </div>
+
         <div class="card-footer msg_complete_card">
           <div class="input-group">
-            <textarea name="" id="messagearea" class="form-control type_msg" placeholder="Type your message..."></textarea>
+            
+            <input type="text" class="form-control type_msg" id="messagearea" placeholder="Type your message...">
             <div class="input-group-append">
               <span class="input-group-text" id="btnSendMessage"><i class="far fa-plus-square"></i></span>
             </div>

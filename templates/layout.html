@@ -34,7 +34,7 @@
         </script>
   <script id="messageTemplateStart" type="text/x-handlebars-template">
     {% raw -%}
-        <div class="d-flex justify-content-start mb-4">
+        <div class="d-flex justify-content-start mb-4 messagefmt">
           <div class="msg_name">
             <span class="badge badge-pill badge-light">{{userName}}</span>
           </div>
@@ -47,7 +47,7 @@
               </script>
               <script id="messageTemplateEnd" type="text/x-handlebars-template">
                 {% raw -%}
-                <div class="d-flex justify-content-end mb-4">
+                <div class="d-flex justify-content-end mb-4 messagefmt">
                   <div class="msg_cotainer_send">
                     {{messageText}}
                     <span class="msg_time_send">{{timecreated}}</span>
@@ -62,7 +62,8 @@
 </head>
 
 <body>
-
+<div class="text-center">
+<h4>WoW Chatroom</h4></div>
   <div class="container">
     {% block body %}{% endblock %}
   </div>
