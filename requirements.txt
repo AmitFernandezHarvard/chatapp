@@ -5,3 +5,5 @@ Flask-SocketIO
 flask_session
 typing
 jsonpickle
+gevent
+gevent-websocket
