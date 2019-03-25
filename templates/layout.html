@@ -5,9 +5,6 @@
     {% block title %}{% endblock %}
   </title>
 
-
-
-
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -16,54 +13,56 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='Stylesheet.css') }}">
+
   <script id="channelTemplate" type="text/x-handlebars-template">
     {% raw -%}
-            <li>
-              <div class="d-flex bd-highlight sel-channel" data-chlname="{{chlName}}">
-                <div class="img_cont">
-                  <img src="/static/images/{{ chlCat }}-Icon.png" class="rounded-circle channel_img">
-
-                </div>
-                <div class="channel_info">
-                  <span>{{ chlName }}</span>
-                  <p>{{ chlCat }}</p>
-                </div>
-              </div>
-            </li>
-         {%- endraw %}
-        </script>
+      <li>
+        <div class="d-flex bd-highlight sel-channel" data-chlname="{{chlName}}">
+          <div class="img_cont">
+            <img src="/static/images/{{ chlCat }}-Icon.png" class="rounded-circle channel_img">
+          </div>
+          <div class="channel_info">
+            <span>{{ chlName }}</span>
+            <p>{{ chlCat }}</p>
+          </div>
+        </div>
+      </li>
+    {%- endraw %}
+  </script>
   <script id="messageTemplateStart" type="text/x-handlebars-template">
     {% raw -%}
-        <div class="d-flex justify-content-start mb-4 messagefmt">
+        <div class="d-flex justify-content-start mb-4 messagefmt" data-uuid="{{uuid}}">
           <div class="msg_name">
             <span class="badge badge-pill badge-light">{{userName}}</span>
           </div>
-          <div class="msg_cotainer">
+          <div class="msg_container">
             {{messageText}}
             <span class="msg_time">{{timecreated}}</span>
           </div>
         </div>
-               {%- endraw %}
-              </script>
-              <script id="messageTemplateEnd" type="text/x-handlebars-template">
-                {% raw -%}
-                <div class="d-flex justify-content-end mb-4 messagefmt">
-                  <div class="msg_cotainer_send">
-                    {{messageText}}
-                    <span class="msg_time_send">{{timecreated}}</span>
-                  </div>
-                  <div class="msg_name">
-                    <span class="badge badge-pill badge-light">{{userName}}</span>
-                  </div>
-                </div>
-                           {%- endraw %}
-                          </script>
+    {%- endraw %}
+  </script>
+  <script id="messageTemplateEnd" type="text/x-handlebars-template">
+    {% raw -%}
+      <div class="d-flex justify-content-end mb-4 messagefmt" data-uuid="{{uuid}}">
+        <div class="msg_container_send">
+          {{messageText}}
+          <span class="msg_time_send">{{timecreated}}</span>
+        </div>
+        <div class="msg_name">
+          <span class="badge badge-pill badge-light">{{userName}}</span>
+          <i class="fa fa-trash del-message"  data-uuid="{{uuid}}"></i>
+        </div>
+      </div>
+    {%- endraw %}
+  </script>
   <script src="{{ url_for('static', filename='index.js') }}"></script>
 </head>
 
 <body>
-<div class="text-center">
-<h4>WoW Chatroom</h4></div>
+  <div class="text-center">
+    <h2>WoW Chatroom</h2>
+  </div>
   <div class="container">
     {% block body %}{% endblock %}
   </div>

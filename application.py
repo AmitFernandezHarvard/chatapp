@@ -1,5 +1,6 @@
 import os
 import jsonpickle, datetime
+import uuid
 from typing import List
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
@@ -8,14 +9,12 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
-
-
-
 class Chat:
-    def __init__(self, userName, message, timecreated):
+    def __init__(self, userName, message, timecreated,uuid):
         self.userName = userName
         self.message = message
         self.timecreated = timecreated
+        self.uuid = uuid
 
 class Channel:
     def __init__(self, name, category, chats: List[Chat]):
@@ -51,7 +50,8 @@ def sendMessage(data):
     newChat = Chat(
     data["userName"],
     data["messageText"],
-    datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
+    datetime.datetime.now().strftime("%m/%d, %H:%M"),
+    str(uuid.uuid4()))
 
     for chl in Channels:
         if chl.name == data["channelName"]:
@@ -64,6 +64,15 @@ def sendMessage(data):
 def getChanneldata(channelName):
     selectedChannel = filter(lambda chl: chl.name == channelName, Channels)
     return jsonpickle.encode(next(selectedChannel));
+
+@socketio.on("deletemessage")
+def deletemessage(data):
+    for chl in Channels:
+        if chl.name == data["channelName"]:
+            for chat in chl.chats:
+                if(chat.uuid == data["msg_uuid"]):
+                    chl.chats.remove(chat)
+                    emit("message-delete",{'channelname':data["channelName"],'uuid': data["msg_uuid"]}, broadcast=True)
 
 
 def IsValidChannel(channelName):
